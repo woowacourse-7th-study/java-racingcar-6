@@ -9,6 +9,7 @@ public class Application {
     private static void playGame(){ // 게임 시작 문구 출력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         inputCars(); // 자동차 이름을 입력받는 메서드 호출
+        System.out.println("시도할 회수는 몇 회인가요?");
     }
 
     private static void inputCars(){ // 자동차 이름을 입력 받음
