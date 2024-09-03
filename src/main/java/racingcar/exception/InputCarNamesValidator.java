@@ -1,9 +1,20 @@
 package racingcar.exception;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputCarNamesValidator {
+
     public static void validateCarNames(String[] carNames) {
+        Set<String> uniqueNames = new HashSet<>(); // 중복 확인을 위한 Set
+
         for (String carName : carNames) {
-            validateCarName(carName.trim());  // 이름 앞뒤의 공백을 제거한 후 유효성 검사
+            String trimmedName = carName.trim();
+            validateCarName(trimmedName);  // 이름 앞뒤의 공백을 제거한 후 유효성 검사
+
+            if (!uniqueNames.add(trimmedName)) { // Set에 추가되지 않으면 중복된 것임
+                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다: " + trimmedName);
+            }
         }
     }
 
