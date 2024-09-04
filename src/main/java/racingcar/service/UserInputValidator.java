@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static racingcar.constant.Range.CAR_NAME_LENGTH_LIMIT;
+import static racingcar.constant.Range.ROUND_MIN;
 import static racingcar.constant.Symbol.COMMA;
 import static racingcar.exception.errorcode.UserInputErrorCode.*;
 
@@ -51,7 +53,7 @@ public class UserInputValidator {
     }
 
     private static void checkContainComma(String input) {
-        if (!input.contains(",")) {
+        if (!input.contains(COMMA.getSymbol())) {
             throw new UserInputException(INPUT_VALUE_NOT_CONTAIN_COMMA);
         }
     }
@@ -66,7 +68,7 @@ public class UserInputValidator {
 
     private static void checkLength(String[] input) {
         for (String name : input) {
-            if (name.length() > 5) {
+            if (name.length() > CAR_NAME_LENGTH_LIMIT.getNumber()) {
                 throw new UserInputException(INVALID_CAR_NAME_LENGTH);
             }
         }
@@ -82,7 +84,7 @@ public class UserInputValidator {
 
     private static void checkMin(String input) {
         int rounds = Integer.parseInt(input);
-        if (rounds < 1) {
+        if (rounds < ROUND_MIN.getNumber()) {
             throw new UserInputException(INVALID_TOTAL_ROUND_RANGE);
         }
     }
