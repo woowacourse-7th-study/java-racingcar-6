@@ -12,11 +12,7 @@ public class Race {
     Integer rounds;
     Cars cars;
 
-    public Race() {
-
-    }
-
-    public void setUp() {
+    public void setup() {
         OutputView.requestCarNames();
         carNames = InputView.requestCarNames();
         UserInputValidator.validateCarNames(carNames);
@@ -34,18 +30,22 @@ public class Race {
     }
 
     public void start() {
-        System.out.println("실행 결과");
+        OutputView.printProcess();
         for (int round = 0; round < rounds; round++) {
             for (String name : names) {
-                System.out.print(name + " : ");
+                OutputView.printCarName(name);
                 Car currentCar = cars.get(name);
-                for (int position = 0; position < currentCar.getPosition(); position++) {
-                    System.out.print("-");
-                }
+                printExistingDash(currentCar);
                 currentCar.race();
-                System.out.println();
+                OutputView.newLine();
             }
-            System.out.println();
+            OutputView.newLine();
+        }
+    }
+
+    private void printExistingDash(Car currentCar) {
+        for (int position = 0; position < currentCar.getPosition(); position++) {
+            OutputView.printDash();
         }
     }
 }

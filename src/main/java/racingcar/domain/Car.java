@@ -23,6 +23,7 @@ public class Car {
         int number = Randoms.pickNumberInRange(0, 9);
         if (number >= 4) {
             forward();
+            System.out.print("-");
         }
     }
 
