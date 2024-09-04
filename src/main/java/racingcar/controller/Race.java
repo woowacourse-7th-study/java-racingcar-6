@@ -6,6 +6,9 @@ import racingcar.service.UserInputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Race {
     String carNames;
     String[] names;
@@ -41,6 +44,25 @@ public class Race {
             }
             OutputView.newLine();
         }
+    }
+
+    public void ranking() {
+        List<String> winners = new ArrayList<>();
+
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < cars.length(); i++) {
+            int currentPosition = cars.get(i).getPosition();
+            if (max < currentPosition) {
+                max = currentPosition;
+            }
+        }
+        for (int i = 0; i < cars.length(); i++) {
+            int currentPosition = cars.get(i).getPosition();
+            if (max == currentPosition) {
+                winners.add(cars.get(i).getName());
+            }
+        }
+        OutputView.printWinners(winners);
     }
 
     private void printExistingDash(Car currentCar) {

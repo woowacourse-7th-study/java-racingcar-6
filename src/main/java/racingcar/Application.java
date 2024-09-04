@@ -8,5 +8,6 @@ public class Application {
         race.setup();
         race.init();
         race.start();
+        race.ranking();
     }
 }

@@ -24,4 +24,11 @@ public class Cars {
         }
         return null;
     }
+
+    public Car get(int index) {
+        return cars.get(index);
+    }
+    public int length() {
+        return cars.size();
+    }
 }
