@@ -6,7 +6,6 @@ import racingcar.service.UserInputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -14,6 +13,7 @@ public class Race {
     String[] names;
     Integer rounds;
     Cars cars;
+    List<String> winners;
 
     public void setup() {
         OutputView.requestCarNames();
@@ -47,21 +47,8 @@ public class Race {
     }
 
     public void ranking() {
-        List<String> winners = new ArrayList<>();
-
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < cars.length(); i++) {
-            int currentPosition = cars.get(i).getPosition();
-            if (max < currentPosition) {
-                max = currentPosition;
-            }
-        }
-        for (int i = 0; i < cars.length(); i++) {
-            int currentPosition = cars.get(i).getPosition();
-            if (max == currentPosition) {
-                winners.add(cars.get(i).getName());
-            }
-        }
+        int max = findMax();
+        findWinners(max);
         OutputView.printWinners(winners);
     }
 
@@ -70,4 +57,26 @@ public class Race {
             OutputView.printDash();
         }
     }
+
+    private int findMax() {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < cars.length(); i++) {
+            int currentPosition = cars.get(i).getPosition();
+            if (max < currentPosition) {
+                max = currentPosition;
+            }
+        }
+        return max;
+    }
+
+    private void findWinners(int max) {
+        for (int i = 0; i < cars.length(); i++) {
+            int currentPosition = cars.get(i).getPosition();
+            if (max == currentPosition) {
+                winners.add(cars.get(i).getName());
+            }
+        }
+    }
+
+
 }
