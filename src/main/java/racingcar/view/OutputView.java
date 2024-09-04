@@ -5,10 +5,12 @@ import racingcar.model.Car;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.constant.ViewMessage.*;
+
 public class OutputView {
 
     public void printResultNotice() {
-        System.out.println("실행 결과");
+        System.out.println(GAME_RESULT);
     }
 
     public void printRoundResult(List<Car> updatedCars) { // 라운드 결과를 출력하는 메서드
@@ -21,8 +23,8 @@ public class OutputView {
     public void printWinners(final List<Car> cars) {
         String winners = cars.stream()
                 .map(Car::getCarName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(WINNER_RESULT_DELIMITER));
 
-        System.out.println("최종 우승자 : " + winners);
+        System.out.println(WINNER_RESULT_FORMAT + winners);
     }
 }

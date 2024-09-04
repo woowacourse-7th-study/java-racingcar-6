@@ -8,10 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static racingcar.constant.ViewMessage.INPUT_CAR_NAME;
+import static racingcar.constant.ViewMessage.INPUT_TRIAL_COUNT;
+
 public class InputView {
 
     public List<String> inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(INPUT_CAR_NAME);
         String carNames = Console.readLine();
         List<String> carNamesList = splitInput(carNames); // 쉼표를 기준으로 리스트로 변환
         InputCarNamesValidator.validateCarNames(carNamesList); // 유효성 검사
@@ -25,7 +28,7 @@ public class InputView {
     }
 
     public int inputRound() { // 시도 횟수 입력 받기
-        System.out.println("시도할 회수는 몇 회인가요?");
+        System.out.println(INPUT_TRIAL_COUNT);
         String input = Console.readLine();
         InputRoundValidator.validateRound(input); // 유효성 검사 및 변환
         int round = Integer.parseInt(input); // 문자열을 정수로 변환
