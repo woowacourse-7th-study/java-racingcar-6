@@ -27,11 +27,11 @@
 - [ ] 요구 사항 출력 값 형식 지키기
 - [ ] 모든 테스트가 성공하는지 확인 하기
 - [ ] ./gradlew clean test 실행 하고 BUILD SUCCESSFUL 확인 하기
-- [ ] java -version 시 JDK 17 확인
-- [ ] System.exit() 호출 하지 않기
-- [ ] 파일, 패키지 이름을 수정하거나 이동 하지 않기
-- [ ] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용 하기
-- [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용 하기
+- [x] java -version 시 JDK 17 확인
+- [x] System.exit() 호출 하지 않기
+- [x] 파일, 패키지 이름을 수정하거나 이동 하지 않기
+- [x] Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickNumberInRange()를 활용 하기
+- [x] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용 하기
 
 ---
 ## 🎯 추가 요구 사항 !!!

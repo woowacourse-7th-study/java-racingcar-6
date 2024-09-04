@@ -6,6 +6,7 @@ import racingcar.service.UserInputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
@@ -34,6 +35,7 @@ public class Race {
     }
 
     public void ranking() {
+        winners = new ArrayList<>();
         int max = findMax();
         findWinners(max);
         printWinners(winners);
