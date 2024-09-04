@@ -61,8 +61,8 @@ public class Race {
     private int findMax() {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < cars.length(); i++) {
-            int currentPosition = cars.get(i).getPosition();
-            if (max < currentPosition) {
+            int currentPosition = getCurrentPosition(i);
+            if (max < getCurrentPosition(i)) {
                 max = currentPosition;
             }
         }
@@ -71,11 +71,14 @@ public class Race {
 
     private void findWinners(int max) {
         for (int i = 0; i < cars.length(); i++) {
-            int currentPosition = cars.get(i).getPosition();
-            if (max == currentPosition) {
+            if (max == getCurrentPosition(i)) {
                 winners.add(cars.get(i).getName());
             }
         }
+    }
+
+    private int getCurrentPosition(int i) {
+        return cars.get(i).getPosition();
     }
 
 
