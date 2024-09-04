@@ -15,4 +15,13 @@ public class Cars {
             cars.add(new Car(name));
         }
     }
+
+    public Car get(String name) {
+        for (Car car : cars) {
+            if (name.equals(car.getName())) {
+                return car;
+            }
+        }
+        return null;
+    }
 }

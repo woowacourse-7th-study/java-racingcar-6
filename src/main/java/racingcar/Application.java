@@ -7,5 +7,6 @@ public class Application {
         Race race = new Race();
         race.setUp();
         race.init();
+        race.start();
     }
 }
