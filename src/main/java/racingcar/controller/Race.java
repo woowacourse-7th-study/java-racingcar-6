@@ -9,47 +9,86 @@ import racingcar.view.OutputView;
 import java.util.List;
 
 public class Race {
-    String carNames;
-    String[] names;
+    String[] carNames;
     Integer rounds;
     Cars cars;
     List<String> winners;
 
     public void setup() {
-        OutputView.requestCarNames();
-        carNames = InputView.requestCarNames();
-        UserInputValidator.validateCarNames(carNames);
-        this.names = carNames.split(",");
+        String input = requestCarNames();
+        validateCarNames(input);
+        carNames = splitNames(input);
 
-        OutputView.requestRounds();
-        String rounds = InputView.requestRounds();
-        UserInputValidator.validateRounds(rounds);
-        this.rounds = Integer.parseInt(rounds);
+        input = requestRounds();
+        validateRounds(input);
+        rounds = parseInt(input);
     }
 
     public void init() {
         cars = new Cars();
-        cars.createCars(names);
+        cars.createCars(carNames);
     }
 
     public void start() {
-        OutputView.printProcess();
-        for (int round = 0; round < rounds; round++) {
-            for (String name : names) {
-                OutputView.printCarName(name);
-                Car currentCar = cars.get(name);
-                printExistingDash(currentCar);
-                currentCar.race();
-                OutputView.newLine();
-            }
-            OutputView.newLine();
-        }
+        raceRounds();
     }
 
     public void ranking() {
         int max = findMax();
         findWinners(max);
         OutputView.printWinners(winners);
+    }
+
+    private String requestCarNames() {
+        OutputView.requestCarNames();
+        return InputView.requestCarNames();
+    }
+
+    private String requestRounds() {
+        OutputView.requestRounds();
+        return InputView.requestRounds();
+    }
+
+    private void validateCarNames(String input) {
+        UserInputValidator.validateCarNames(input);
+    }
+
+    private void validateRounds(String input) {
+        UserInputValidator.validateRounds(input);
+    }
+
+    private String[] splitNames(String input) {
+        return input.split(",");
+    }
+
+    private int parseInt(String input) {
+        return Integer.parseInt(input);
+    }
+
+    private void raceRounds() {
+        printProcessMessage();
+        for (int round = 0; round < rounds; round++) {
+            raceEachCar();
+            OutputView.newLine();
+        }
+    }
+
+    private void printProcessMessage() {
+        OutputView.printProcess();
+    }
+
+    private void raceEachCar() {
+        for (String carName : carNames) {
+            race(carName);
+            OutputView.newLine();
+        }
+    }
+
+    private void race(String carName) {
+        OutputView.printCarName(carName);
+        Car currentCar = getCar(carName);
+        printExistingDash(currentCar);
+        currentCar.race();
     }
 
     private void printExistingDash(Car currentCar) {
@@ -77,9 +116,16 @@ public class Race {
         }
     }
 
-    private int getCurrentPosition(int i) {
-        return cars.get(i).getPosition();
+    private Car getCar(int i) {
+        return cars.get(i);
     }
 
+    private Car getCar(String name) {
+        return cars.get(name);
+    }
+
+    private int getCurrentPosition(int i) {
+        return getCar(i).getPosition();
+    }
 
 }
