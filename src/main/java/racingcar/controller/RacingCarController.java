@@ -27,7 +27,13 @@ public class RacingCarController {
 
         RacingGame racingGame = new RacingGame(cars);
 
-        racingGame.startRounds(round);  // 내부에서 각 라운드 결과를 처리하고 출력
+        outputView.printResult(); // "실행 결과" 출력
+
+        // 각 라운드 진행하고 출력하기
+        for (int i = 0; i < round; i++) {
+            List<Car> updatedCars = racingGame.startRound(); // 한 라운드 진행
+            outputView.printRoundResult(updatedCars);  // 라운드 결과 출력
+        }
     }
 
 }
