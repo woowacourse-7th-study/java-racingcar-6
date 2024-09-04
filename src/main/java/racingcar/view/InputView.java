@@ -12,6 +12,7 @@ import static racingcar.constant.ViewMessage.INPUT_CAR_NAME;
 import static racingcar.constant.ViewMessage.INPUT_TRIAL_COUNT;
 
 public class InputView {
+    public static final String CAR_NAMES_DILIMITER = ",";
 
     public List<String> inputCarNames() {
         System.out.println(INPUT_CAR_NAME);
@@ -22,7 +23,7 @@ public class InputView {
     }
 
     private List<String> splitInput(String names) {
-        return Arrays.stream(names.split(",", -1)) // 쉼표를 기준으로 쪼개고
+        return Arrays.stream(names.split(CAR_NAMES_DILIMITER, -1)) // 쉼표를 기준으로 쪼개고
                 .map(String::trim) // 각 이름의 앞뒤 공백 제거
                 .collect(Collectors.toList()); // 리스트로 변환하여 반환
     }
