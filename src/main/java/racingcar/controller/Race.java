@@ -9,6 +9,10 @@ import racingcar.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static racingcar.constant.Range.INT_MIN;
+import static racingcar.constant.Range.ZERO;
+import static racingcar.constant.Symbol.COMMA;
+
 public class Race {
     String[] carNames;
     Integer rounds;
@@ -60,7 +64,7 @@ public class Race {
     }
 
     private String[] splitNames(String input) {
-        return input.split(",");
+        return input.split(COMMA.getSymbol());
     }
 
     private int parseInt(String input) {
@@ -69,7 +73,7 @@ public class Race {
 
     private void raceRounds() {
         printProcessMessage();
-        for (int round = 0; round < rounds; round++) {
+        for (int round = ZERO.getNumber(); round < rounds; round++) {
             raceEachCar();
             OutputView.newLine();
         }
@@ -94,14 +98,14 @@ public class Race {
     }
 
     private void printExistingDash(Car currentCar) {
-        for (int position = 0; position < currentCar.getPosition(); position++) {
+        for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
             OutputView.printDash();
         }
     }
 
     private int findMax() {
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < cars.length(); i++) {
+        int max = INT_MIN.getNumber();
+        for (int i = ZERO.getNumber(); i < cars.length(); i++) {
             int currentPosition = getCurrentPosition(i);
             if (max < getCurrentPosition(i)) {
                 max = currentPosition;
@@ -111,7 +115,7 @@ public class Race {
     }
 
     private void findWinners(int max) {
-        for (int i = 0; i < cars.length(); i++) {
+        for (int i = ZERO.getNumber(); i < cars.length(); i++) {
             if (max == getCurrentPosition(i)) {
                 winners.add(cars.get(i).getName());
             }

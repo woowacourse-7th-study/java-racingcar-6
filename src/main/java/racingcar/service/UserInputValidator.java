@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static racingcar.constant.Symbol.COMMA;
 import static racingcar.exception.errorcode.UserInputErrorCode.*;
 
 public class UserInputValidator {
@@ -21,7 +22,7 @@ public class UserInputValidator {
         checkStrip(input, carNames);
         checkContainComma(carNames);
 
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(COMMA.getSymbol());
 
         checkDuplication(names);
         checkLength(names);

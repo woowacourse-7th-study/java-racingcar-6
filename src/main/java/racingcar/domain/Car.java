@@ -2,13 +2,16 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import static racingcar.constant.Range.*;
+import static racingcar.constant.Symbol.DASH;
+
 public class Car {
     private final String name;
     private int position;
 
     public Car(final String name) {
         this.name = name;
-        this.position = 0;
+        this.position = ZERO.getNumber();
     }
 
     public final String getName() {
@@ -20,10 +23,10 @@ public class Car {
     }
 
     public void race() {
-        int number = Randoms.pickNumberInRange(0, 9);
-        if (number >= 4) {
+        int number = Randoms.pickNumberInRange(RANDOM_RANGE_MIN.getNumber(), RANDOM_RANGE_MAX.getNumber());
+        if (number >= FORWARD_MIN.getNumber()) {
             forward();
-            System.out.print("-");
+            System.out.print(DASH);
         }
     }
 
