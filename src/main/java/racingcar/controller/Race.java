@@ -36,7 +36,7 @@ public class Race {
     public void ranking() {
         int max = findMax();
         findWinners(max);
-        OutputView.printWinners(winners);
+        printWinners(winners);
     }
 
     private String requestCarNames() {
@@ -114,6 +114,10 @@ public class Race {
                 winners.add(cars.get(i).getName());
             }
         }
+    }
+
+    private void printWinners(List<String> winners) {
+        OutputView.printWinners(winners);
     }
 
     private Car getCar(int i) {
