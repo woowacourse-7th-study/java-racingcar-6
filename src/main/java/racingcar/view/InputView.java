@@ -7,10 +7,14 @@ public class InputView {
     }
 
     public static String requestCarNames() {
-        return Console.readLine();
+        return readLine();
     }
 
     public static String requestRounds() {
+        return readLine();
+    }
+
+    private static String readLine() {
         return Console.readLine();
     }
 }
