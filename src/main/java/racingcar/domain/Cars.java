@@ -10,8 +10,7 @@ public class Cars {
         cars = new ArrayList<>();
     }
 
-    public void createCars(String carNames) {
-        String[] names = carNames.split(",");
+    public void createCars(String[] names) {
         for (String name : names) {
             cars.add(new Car(name));
         }

@@ -7,6 +7,7 @@ import racingcar.view.OutputView;
 
 public class Race {
     String carNames;
+    String[] names;
     Integer rounds;
 
     public Race() {
@@ -17,6 +18,7 @@ public class Race {
         OutputView.requestCarNames();
         carNames = InputView.requestCarNames();
         UserInputValidator.validateCarNames(carNames);
+        this.names = carNames.split(",");
 
         OutputView.requestRounds();
         String rounds = InputView.requestRounds();
@@ -26,6 +28,6 @@ public class Race {
 
     public void init() {
         Cars cars = new Cars();
-        cars.createCars(carNames);
+        cars.createCars(names);
     }
 }
