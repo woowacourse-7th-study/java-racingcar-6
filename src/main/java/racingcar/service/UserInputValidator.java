@@ -1,6 +1,5 @@
 package racingcar.service;
 
-
 import racingcar.exception.UserInputException;
 
 import java.util.Arrays;
