@@ -24,9 +24,9 @@
 ## 🎯 0 점 방지 !!!
 - [ ] Github PR 제출
 - [ ] 우테코 사이트 제출
-- [ ] 요구 사항 출력 값 형식 지키기
+- [x] 요구 사항 출력 값 형식 지키기
 - [ ] 모든 테스트가 성공하는지 확인 하기
-- [ ] ./gradlew clean test 실행 하고 BUILD SUCCESSFUL 확인 하기
+- [x] ./gradlew clean test 실행 하고 BUILD SUCCESSFUL 확인 하기
 - [x] java -version 시 JDK 17 확인
 - [x] System.exit() 호출 하지 않기
 - [x] 파일, 패키지 이름을 수정하거나 이동 하지 않기
