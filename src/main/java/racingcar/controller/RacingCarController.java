@@ -27,7 +27,7 @@ public class RacingCarController {
 
         RacingGame racingGame = new RacingGame(cars);
 
-        outputView.printResult(); // "실행 결과" 출력
+        outputView.printResultNotice(); // "실행 결과" 출력
 
         // 각 라운드 진행하고 출력하기
         for (int i = 0; i < round; i++) {

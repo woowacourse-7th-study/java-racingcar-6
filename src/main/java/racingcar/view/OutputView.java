@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OutputView {
 
-    public void printResult() {
+    public void printResultNotice() {
         System.out.println("실행 결과");
     }
 
