@@ -1,11 +1,12 @@
 package racingcar.exception;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InputCarNamesValidator {
 
-    public static void validateCarNames(String[] carNames) {
+    public static void validateCarNames(List<String> carNames) {
         Set<String> uniqueNames = new HashSet<>(); // 중복 확인을 위한 Set
 
         for (String carName : carNames) {

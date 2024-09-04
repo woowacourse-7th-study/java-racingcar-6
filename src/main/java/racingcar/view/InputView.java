@@ -4,19 +4,24 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.InputCarNamesValidator;
 import racingcar.exception.InputRoundValidator;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class InputView {
 
-    public String[] inputCarNames() {
+    public List<String> inputCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = Console.readLine();
-        String[] carNamesArray = splitInput(carNames); // 쉼표를 기준으로 쪼개어서 배열에 담은 후
-        InputCarNamesValidator.validateCarNames(carNamesArray); // 유효성 검사
-        return carNamesArray;
+        List<String> carNamesList = splitInput(carNames); // 쉼표를 기준으로 리스트로 변환
+        InputCarNamesValidator.validateCarNames(carNamesList); // 유효성 검사
+        return carNamesList;
     }
 
-    private String[] splitInput(String names) { // 쉼표를 기준으로 자동차 이름을 입력 받음
-        // 입력된 문자열을 쉼표로 분리하여 배열에 저장
-        return names.split(",", -1); // split은 정규표현식 기반이므로 빈 문자열은 무시함 -> -1을 인자로 전달하여 빈 문자열도 포함시키기
+    private List<String> splitInput(String names) {
+        return Arrays.stream(names.split(",", -1)) // 쉼표를 기준으로 쪼개고
+                .map(String::trim) // 각 이름의 앞뒤 공백 제거
+                .collect(Collectors.toList()); // 리스트로 변환하여 반환
     }
 
     public int inputRound() { // 시도 횟수 입력 받기

@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -13,7 +15,7 @@ public class RacingCarController {
     }
 
     public void run() {
-        final String[] carNames = inputView.inputCarNames();
+        final List<String> carNames = inputView.inputCarNames();
         final int round = inputView.inputRound();
     }
 
