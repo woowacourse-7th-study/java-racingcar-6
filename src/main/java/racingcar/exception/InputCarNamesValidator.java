@@ -7,6 +7,11 @@ import java.util.Set;
 public class InputCarNamesValidator {
 
     public static void validateCarNames(List<String> carNames) {
+        // 자동차 이름이 1개 이하일 경우 예외 발생
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException("자동차 이름은 최소 2개 이상이어야 합니다.");
+        }
+        // 자동차 이름이 중복되는 경우 예외 발생
         Set<String> uniqueNames = new HashSet<>(); // 중복 확인을 위한 Set
 
         for (String carName : carNames) {
