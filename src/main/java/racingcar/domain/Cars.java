@@ -11,9 +11,9 @@ public class Cars {
     }
 
     public void createCars(String carNames) {
-        String[] carNameArray = carNames.split(",");
-        for (String carName : carNameArray) {
-            cars.add(new Car(carName));
+        String[] names = carNames.split(",");
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 }
