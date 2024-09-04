@@ -1,5 +1,15 @@
 package racingcar.service;
 
+
+import racingcar.exception.UserInputException;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static racingcar.exception.errorcode.UserInputErrorCode.*;
+
 public class UserInputValidator {
     private UserInputValidator() {
     }
@@ -14,6 +24,7 @@ public class UserInputValidator {
 
         String[] names = carNames.split(",");
 
+        checkDuplication(names);
         checkLength(names);
     }
 
@@ -23,32 +34,40 @@ public class UserInputValidator {
         String rounds = input.strip();
 
         checkStrip(input, rounds);
-
         checkInt(rounds);
+        checkMin(rounds);
     }
 
     private static void checkEmpty(String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("공백 입력은 불가능합니다.");
+            throw new UserInputException(INPUT_VALUE_BLANK);
         }
     }
 
     private static void checkStrip(String input, String stripped) {
         if (!stripped.equals(input)) {
-            throw new IllegalArgumentException("문장 맨 앞과 맨 뒤에 공백 입력은 불가능합니다.");
+            throw new UserInputException(INPUT_VALUE_BLANK_FIRST_LAST);
         }
     }
 
     private static void checkContainComma(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException("\",\"를 기준으로 자동차의 이름을 나누어 입력해주세요.");
+            throw new UserInputException(INPUT_VALUE_NOT_CONTAIN_COMMA);
+        }
+    }
+
+    private static void checkDuplication(String[] names) {
+        List<String> nameList = Arrays.asList(names);
+        Set<String> nameSet = new HashSet<>(nameList);
+        if (nameList.size() != nameSet.size()) {
+            throw new UserInputException(DUPLICATED_CAR_NAME);
         }
     }
 
     private static void checkLength(String[] input) {
         for (String name : input) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+                throw new UserInputException(INVALID_CAR_NAME_LENGTH);
             }
         }
     }
@@ -57,7 +76,14 @@ public class UserInputValidator {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("시도할 횟수는 정수를 입력해주세요.");
+            throw new UserInputException(INPUT_VALUE_NOT_NUMERIC);
+        }
+    }
+
+    private static void checkMin(String input) {
+        int rounds = Integer.parseInt(input);
+        if (rounds < 1) {
+            throw new UserInputException(INVALID_TOTAL_ROUND_RANGE);
         }
     }
 
