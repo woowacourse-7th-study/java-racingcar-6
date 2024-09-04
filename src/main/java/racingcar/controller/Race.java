@@ -5,9 +5,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class Race {
-
-    static String carNames;
-    static String rounds;
+    String carNames;
+    Integer rounds;
 
     public Race() {
 
@@ -19,7 +18,8 @@ public class Race {
         UserInputValidator.validateCarNames(carNames);
 
         OutputView.requestRounds();
-        rounds = InputView.requestRounds();
+        String rounds = InputView.requestRounds();
         UserInputValidator.validateRounds(rounds);
+        this.rounds = Integer.parseInt(rounds);
     }
 }
