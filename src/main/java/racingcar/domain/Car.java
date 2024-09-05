@@ -22,8 +22,7 @@ public class Car {
         return position;
     }
 
-    public void race() {
-        int number = Randoms.pickNumberInRange(RANDOM_RANGE_MIN.getNumber(), RANDOM_RANGE_MAX.getNumber());
+    public void move(int number) {
         if (number >= FORWARD_MIN.getNumber()) {
             forward();
             System.out.print(DASH);

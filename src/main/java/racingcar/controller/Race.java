@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.service.UserInputValidator;
@@ -9,8 +10,8 @@ import racingcar.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.constant.Range.INT_MIN;
-import static racingcar.constant.Range.ZERO;
+import static racingcar.constant.Range.*;
+import static racingcar.constant.Range.RANDOM_RANGE_MAX;
 import static racingcar.constant.Symbol.COMMA;
 
 public class Race {
@@ -94,13 +95,18 @@ public class Race {
         OutputView.printCarName(carName);
         Car currentCar = getCar(carName);
         printExistingDash(currentCar);
-        currentCar.race();
+        int number = pickNumber();
+        currentCar.move(number);
     }
 
     private void printExistingDash(Car currentCar) {
         for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
             OutputView.printDash();
         }
+    }
+
+    public int pickNumber() {
+        return Randoms.pickNumberInRange(RANDOM_RANGE_MIN.getNumber(), RANDOM_RANGE_MAX.getNumber());
     }
 
     private int findMax() {
