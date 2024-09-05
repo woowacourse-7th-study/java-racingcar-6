@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.domain;
 
 public class Movable {
     private static final int MOVE_FORWARD_LOWER_BOUND = 4; // 전진 조건
