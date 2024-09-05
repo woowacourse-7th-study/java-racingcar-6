@@ -61,8 +61,6 @@ public class RacingCarController {
 
     // 우승자 계산 및 출력
     private void printWinners() {
-        int maxDistance = cars.getMaxDistance(); // 최대 거리 계산
-        List<Car> winners = cars.getWinners(maxDistance); // 우승자 가져오기
-        outputView.printWinners(winners); // 우승자 출력
+        outputView.printWinners(racingGame.chooseWinners(cars)); // 우승자 출력
     }
 }
