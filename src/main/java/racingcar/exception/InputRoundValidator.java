@@ -3,6 +3,7 @@ package racingcar.exception;
 import static racingcar.constant.ErrorMessage.*;
 
 public class InputRoundValidator {
+    public static final int TRIAL_TIME_MIN = 0;
     public static void validateRound(String input) { // 시도 횟수 유효성 검사
         if (input == null || input.isEmpty()) { // 입력이 null이거나 빈 문자열인 경우
             throw new IllegalArgumentException(INPUT_BLANK);
@@ -14,7 +15,7 @@ public class InputRoundValidator {
             }
         }
 
-        if (Integer.parseInt(input) <= 0) { // 시도 횟수가 0 이하인 경우
+        if (Integer.parseInt(input) <= TRIAL_TIME_MIN) { // 시도 횟수가 0 이하인 경우
             throw new IllegalArgumentException(INVALID_NEGATIVE);
         }
     }
