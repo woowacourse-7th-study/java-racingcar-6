@@ -1,11 +1,12 @@
-package racingcar.domain;
+package racingcar.service;
 
+import racingcar.domain.Movable;
 import racingcar.domain.model.Car;
 import racingcar.domain.model.Cars;
 
 import java.util.List;
 
-public class RacingGame {
+public class GameService {
     // 각 라운드를 진행하는 메서드
     public void startRound(Cars cars) {
         cars.updateRaceRound(new Movable()); // Cars에서 각 자동차의 라운드를 진행

@@ -1,26 +1,24 @@
 package racingcar.controller;
 
 import racingcar.domain.dto.CarsDTO;
-import racingcar.domain.model.Car;
 import racingcar.domain.model.Cars;
-import racingcar.domain.RacingGame;
+import racingcar.service.GameService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingCarController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final RacingGame racingGame;
+    private final GameService gameService;
     private Cars cars;
     private int round;
 
     public RacingCarController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.racingGame = new RacingGame();
+        this.gameService = new GameService();
     }
 
     public void run() {
@@ -46,13 +44,13 @@ public class RacingCarController {
         outputView.printResultNotice();
 
         for (int i = 0; i < round; i++) {
-            racingGame.startRound(cars); // 각 라운드 진행
+            gameService.startRound(cars); // 각 라운드 진행
             outputView.printRoundResult(cars.getCars()); // 각 라운드 결과 출력
         }
     }
 
     // 우승자 계산 및 출력
     private void printWinners() {
-        outputView.printWinners(racingGame.chooseWinners(cars)); // 우승자 출력
+        outputView.printWinners(gameService.chooseWinners(cars)); // 우승자 출력
     }
 }
