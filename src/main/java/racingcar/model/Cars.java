@@ -5,17 +5,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class Cars {
-
-    public static final int RANDOM_NUM_MIN = 0;
-    public static final int RANDOM_NUM_MAX = 9;
     private final List<Car> racingCars;
 
     public Cars(final List<Car> racingCars) {
         this.racingCars = racingCars;
     }
 
-    public void updateRaceRound() {
-        racingCars.forEach(car -> car.moveForward(Randoms.pickNumberInRange(RANDOM_NUM_MIN, RANDOM_NUM_MAX)));
+    public void updateRaceRound(Movable movable) {
+        racingCars.forEach(car -> car.moveForward(movable));
     }
 
     public List<Car> getCars() {

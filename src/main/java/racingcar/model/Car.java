@@ -1,7 +1,6 @@
 package racingcar.model;
 
 public class Car {
-    private static final int MOVE_FORWARD_LOWER_BOUND = 4; // 전진 조건
     private final String name;
     private int distance = 0;
 
@@ -9,8 +8,8 @@ public class Car {
         this.name = name;
     }
 
-    public void moveForward(final int condition) { // 전진 조건
-        if (condition >= MOVE_FORWARD_LOWER_BOUND) {
+    public void moveForward(Movable movable) { // 전진 조건
+        if (movable.canMove()) {
             distance++;
         }
     }
