@@ -2,20 +2,12 @@ package racingcar.view;
 
 import java.util.List;
 
-import static racingcar.constant.Message.*;
+import static racingcar.constant.Message.PRINT_WINNERS;
+import static racingcar.constant.Message.PROCESSING_MESSAGE;
 import static racingcar.constant.Symbol.*;
 
 public class OutputView {
     private OutputView() {
-
-    }
-
-    public static void requestCarNames() {
-        System.out.println(ENTER_CAR_NAMES.getMessage());
-    }
-
-    public static void requestRounds() {
-        System.out.println(ENTER_ROUNDS.getMessage());
     }
 
     public static void printProcess() {
@@ -30,12 +22,7 @@ public class OutputView {
         System.out.print(DASH.getSymbol());
     }
 
-    public static void newLine() {
-        System.out.println();
-    }
-
     public static void printWinners(List<String> winners) {
         System.out.println(PRINT_WINNERS.getMessage() + String.join(COMMA.getSymbol() + BLANK.getSymbol(), winners));
     }
-
 }

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static racingcar.constant.Range.*;
-import static racingcar.constant.Range.RANDOM_RANGE_MAX;
 import static racingcar.constant.Symbol.COMMA;
 
 public class Race {
@@ -54,12 +53,10 @@ public class Race {
     }
 
     private String requestCarNames() {
-        OutputView.requestCarNames();
         return InputView.requestCarNames();
     }
 
     private String requestRounds() {
-        OutputView.requestRounds();
         return InputView.requestRounds();
     }
 
@@ -83,7 +80,7 @@ public class Race {
         printProcessMessage();
         for (int round = ZERO.getNumber(); round < rounds; round++) {
             raceEachCar();
-            OutputView.newLine();
+            System.out.println();
         }
     }
 
@@ -94,7 +91,7 @@ public class Race {
     private void raceEachCar() {
         for (String carName : carNames) {
             race(carName);
-            OutputView.newLine();
+            System.out.println();
         }
     }
 
