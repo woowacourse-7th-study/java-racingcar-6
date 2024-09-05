@@ -20,7 +20,14 @@ public class Race {
     Cars cars;
     List<String> winners;
 
-    public void setup() {
+    public void run() {
+        setup();
+        init();
+        start();
+        ranking();
+    }
+
+    private void setup() {
         String input = requestCarNames();
         validateCarNames(input);
         carNames = splitNames(input);
@@ -30,16 +37,16 @@ public class Race {
         rounds = parseInt(input);
     }
 
-    public void init() {
+    private void init() {
         cars = new Cars();
         cars.createCars(carNames);
     }
 
-    public void start() {
+    private void start() {
         raceRounds();
     }
 
-    public void ranking() {
+    private void ranking() {
         winners = new ArrayList<>();
         int max = findMax();
         findWinners(max);
