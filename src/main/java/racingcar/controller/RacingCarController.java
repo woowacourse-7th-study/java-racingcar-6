@@ -1,7 +1,8 @@
 package racingcar.controller;
 
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.dto.CarsDTO;
+import racingcar.domain.model.Car;
+import racingcar.domain.model.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -38,9 +39,7 @@ public class RacingCarController {
     // 자동차 이름을 입력받아 Cars 객체 생성
     private void inputCarNames() {
         List<String> carNames = inputView.inputCarNames();
-        cars = new Cars(carNames.stream()
-                .map(Car::new) // Car 객체 생성
-                .collect(Collectors.toList())); // List<Car>로 변환
+        cars = new CarsDTO(carNames).getCars();
     }
 
     // 라운드 수 입력받기

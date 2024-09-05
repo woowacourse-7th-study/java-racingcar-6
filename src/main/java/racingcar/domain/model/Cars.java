@@ -1,4 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.model;
+
+import racingcar.domain.Movable;
+import racingcar.domain.model.Car;
 
 import java.util.List;
 

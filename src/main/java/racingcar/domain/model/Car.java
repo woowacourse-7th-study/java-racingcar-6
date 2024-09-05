@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.model;
+
+import racingcar.domain.Movable;
 
 public class Car {
     private final String name;
