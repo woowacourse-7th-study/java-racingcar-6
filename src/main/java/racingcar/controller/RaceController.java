@@ -3,6 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.service.RandomNumberService;
 import racingcar.service.UserInputService;
 import racingcar.service.UserInputValidator;
 import racingcar.view.OutputView;
@@ -60,7 +61,7 @@ public class RaceController {
         OutputView.printCarName(carName);
         Car currentCar = getCar(carName);
         printExistingDash(currentCar);
-        int number = pickNumber();
+        int number = RandomNumberService.pickNumber();
         currentCar.move(number);
     }
 
@@ -69,20 +70,6 @@ public class RaceController {
         int max = findMax();
         findWinners(max);
         OutputView.printWinners(winners);
-    }
-
-    private String[] splitNames(String input) {
-        return input.split(COMMA.getSymbol());
-    }
-
-    private void printExistingDash(Car currentCar) {
-        for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
-            OutputView.printDash();
-        }
-    }
-
-    public int pickNumber() {
-        return Randoms.pickNumberInRange(RANDOM_RANGE_MIN.getNumber(), RANDOM_RANGE_MAX.getNumber());
     }
 
     private int findMax() {
@@ -101,6 +88,16 @@ public class RaceController {
             if (max == getCurrentPosition(i)) {
                 winners.add(cars.get(i).getName());
             }
+        }
+    }
+
+    private String[] splitNames(String input) {
+        return input.split(COMMA.getSymbol());
+    }
+
+    private void printExistingDash(Car currentCar) {
+        for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
+            OutputView.printDash();
         }
     }
 
