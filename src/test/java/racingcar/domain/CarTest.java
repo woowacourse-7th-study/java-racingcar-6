@@ -8,23 +8,70 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
 
+    String name;
     Car car;
-    String name = "test";
+
 
     @BeforeEach
     void setup() {
+        name = "test";
         car = new Car(name);
     }
 
     @Test
     @DisplayName("자동차의 이름을 받아오는 데 성공한다.")
     void getName() {
-        assertThat(car.getName()).isEqualTo(name);
+        // given
+        String expected = name;
+
+        // when
+        String real = car.getName();
+
+        // then
+        assertThat(real).isEqualTo(expected);
     }
 
     @Test
     @DisplayName("자동차의 현재 위치를 받아오는 데 성공한다.")
     void getPosition() {
-        assertThat(car.getPosition()).isEqualTo(0);
+        // given
+        int expected = 0;
+
+        // when
+        int real = car.getPosition();
+
+        // then
+        assertThat(real).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("선택한 수가 3 이하인 경우 정지한다.")
+    void moveStop() {
+        // given
+        int randomNumber = 3;
+        int expected = 0;
+
+        // when
+        car.move(randomNumber);
+        int real = car.getPosition();
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("선택한 수가 4 이상인 경우 전진한다.")
+    void moveForward() {
+        // given
+        int randomNumber = 4;
+        int expected = 1;
+
+        // when
+        car.move(randomNumber);
+        int real = car.getPosition();
+
+        // then
+        assertThat(real).isEqualTo(expected);
+    }
+
 }
