@@ -5,7 +5,6 @@ import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.service.UserInputService;
 import racingcar.service.UserInputValidator;
-import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.List;
 import static racingcar.constant.Range.*;
 import static racingcar.constant.Symbol.COMMA;
 
-public class Race {
+public class RaceController {
     String[] carNames;
     Integer rounds;
     Cars cars;
