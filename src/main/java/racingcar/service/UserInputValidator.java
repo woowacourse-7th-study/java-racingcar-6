@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static racingcar.constant.Range.CAR_NAME_LENGTH_LIMIT;
+import static racingcar.constant.Range.CAR_NAME_LENGTH_MAX;
 import static racingcar.constant.Range.ROUND_MIN;
 import static racingcar.constant.Symbol.COMMA;
 import static racingcar.exception.errorcode.UserInputErrorCode.*;
@@ -68,7 +68,7 @@ public class UserInputValidator {
 
     private static void checkLength(String[] input) {
         for (String name : input) {
-            if (name.length() > CAR_NAME_LENGTH_LIMIT.getNumber()) {
+            if (name.length() > CAR_NAME_LENGTH_MAX.getNumber()) {
                 throw new UserInputException(INVALID_CAR_NAME_LENGTH);
             }
         }
