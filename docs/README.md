@@ -73,7 +73,7 @@
   - [x] MovableTest
     - 4 이상에서 전진하는지 검증
     - 3 이하에서 정지하는지 검증
-  - [ ] RandomNumberGeneratorTest
+  - [x] RandomNumberGeneratorTest
     - 0부터 9까지의 숫자가 발생하는지 검증
 
 - View
