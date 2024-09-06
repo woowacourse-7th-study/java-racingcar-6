@@ -1,17 +1,16 @@
 package racingcar.controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.service.FindWinnerService;
 import racingcar.service.RandomNumberService;
 import racingcar.service.UserInputService;
 import racingcar.service.UserInputValidator;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.constant.Range.*;
+import static racingcar.constant.Range.ZERO;
 import static racingcar.constant.Symbol.COMMA;
 
 public class RaceController {
@@ -30,7 +29,7 @@ public class RaceController {
     private void setup() {
         String input = UserInputService.requestCarNames();
         UserInputValidator.validateCarNames(input);
-        carNames = splitNames(input);
+        carNames = input.split(COMMA.getSymbol());
 
         input = UserInputService.requestRounds();
         UserInputValidator.validateRounds(input);
@@ -59,58 +58,17 @@ public class RaceController {
 
     private void race(String carName) {
         OutputView.printCarName(carName);
-        Car currentCar = getCar(carName);
-        printExistingDash(currentCar);
+        Car currentCar = FindWinnerService.getCar(cars, carName);
+        for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
+            OutputView.printDash();
+        }
         int number = RandomNumberService.pickNumber();
         currentCar.move(number);
     }
 
     private void ranking() {
-        winners = new ArrayList<>();
-        int max = findMax();
-        findWinners(max);
+        int max = FindWinnerService.findMax(cars);
+        winners = FindWinnerService.findWinners(cars, max);
         OutputView.printWinners(winners);
     }
-
-    private int findMax() {
-        int max = INT_MIN.getNumber();
-        for (int i = ZERO.getNumber(); i < cars.length(); i++) {
-            int currentPosition = getCurrentPosition(i);
-            if (max < getCurrentPosition(i)) {
-                max = currentPosition;
-            }
-        }
-        return max;
-    }
-
-    private void findWinners(int max) {
-        for (int i = ZERO.getNumber(); i < cars.length(); i++) {
-            if (max == getCurrentPosition(i)) {
-                winners.add(cars.get(i).getName());
-            }
-        }
-    }
-
-    private String[] splitNames(String input) {
-        return input.split(COMMA.getSymbol());
-    }
-
-    private void printExistingDash(Car currentCar) {
-        for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
-            OutputView.printDash();
-        }
-    }
-
-    private Car getCar(int i) {
-        return cars.get(i);
-    }
-
-    private Car getCar(String name) {
-        return cars.get(name);
-    }
-
-    private int getCurrentPosition(int i) {
-        return getCar(i).getPosition();
-    }
-
 }

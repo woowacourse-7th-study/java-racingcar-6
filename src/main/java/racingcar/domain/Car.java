@@ -25,7 +25,7 @@ public class Car {
     public void move(int number) {
         if (number >= FORWARD_MIN.getNumber()) {
             forward();
-            System.out.print(DASH);
+            System.out.print(DASH.getSymbol());
         }
     }
 
