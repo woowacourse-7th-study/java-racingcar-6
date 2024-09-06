@@ -39,10 +39,16 @@ public class InputView {
     public int inputRound() { // 시도 횟수 입력 받기
         System.out.println(INPUT_TRIAL_COUNT);
         String input = Console.readLine();
-        InputRoundValidator.validateRound(input); // 유효성 검사 및 변환
-        int round = Integer.parseInt(input); // 문자열을 정수로 변환
+        return processRoundInput(input);
+    }
 
-        return round;
+    public int inputRoundForTest(String input) { // 테스트 시 사용할 입력 메서드
+        return processRoundInput(input);
+    }
+
+    private int processRoundInput(String input) {
+        InputRoundValidator.validateRound(input); // 유효성 검사 및 변환
+        return Integer.parseInt(input); // 문자열을 정수로 변환
     }
 
 }
