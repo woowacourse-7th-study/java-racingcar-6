@@ -12,6 +12,7 @@ public class Movable {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
+    // 전진 조건을 만족하면 true를 반환하는 메서드
     public boolean canMove() { // 전진 조건을 만족하면 true 반환
         return MOVE_FORWARD_LOWER_BOUND <= randomNumberGenerator.generate();
     }
