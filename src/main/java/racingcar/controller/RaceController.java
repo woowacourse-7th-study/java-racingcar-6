@@ -2,10 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.service.FindWinnerService;
-import racingcar.service.RandomNumberService;
-import racingcar.service.UserInputService;
-import racingcar.service.UserInputValidator;
+import racingcar.service.*;
 import racingcar.view.OutputView;
 
 import java.util.List;
@@ -58,7 +55,7 @@ public class RaceController {
 
     private void race(String carName) {
         OutputView.printCarName(carName);
-        Car currentCar = FindWinnerService.getCar(cars, carName);
+        Car currentCar = FindCarService.getCar(cars, carName);
         for (int position = ZERO.getNumber(); position < currentCar.getPosition(); position++) {
             OutputView.printDash();
         }

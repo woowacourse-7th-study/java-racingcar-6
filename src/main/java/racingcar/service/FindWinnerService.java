@@ -16,8 +16,8 @@ public class FindWinnerService {
     public static int findMax(Cars cars) {
         int max = INT_MIN.getNumber();
         for (int i = ZERO.getNumber(); i < cars.length(); i++) {
-            int currentPosition = getCurrentPosition(cars, i);
-            if (max < getCurrentPosition(cars, i)) {
+            int currentPosition = FindCarService.getCurrentPosition(cars, i);
+            if (max < FindCarService.getCurrentPosition(cars, i)) {
                 max = currentPosition;
             }
         }
@@ -27,23 +27,14 @@ public class FindWinnerService {
     public static List<String> findWinners(Cars cars, int max) {
         List<String> winners = new ArrayList<>();
         for (int i = ZERO.getNumber(); i < cars.length(); i++) {
-            if (max == getCurrentPosition(cars, i)) {
-                winners.add(getCar(cars, i).getName());
+            if (max == FindCarService.getCurrentPosition(cars, i)) {
+                Car maxCar = FindCarService.getCar(cars, i);
+                String maxCarName = maxCar.getName();
+                winners.add(maxCarName);
             }
         }
         return winners;
     }
 
-    public static Car getCar(Cars cars, int i) {
-        return cars.get(i);
-    }
-
-    public static Car getCar(Cars cars, String name) {
-        return cars.get(name);
-    }
-
-    public static int getCurrentPosition(Cars cars, int i) {
-        return getCar(cars, i).getPosition();
-    }
 
 }
