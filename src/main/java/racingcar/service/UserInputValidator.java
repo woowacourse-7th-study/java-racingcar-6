@@ -41,7 +41,7 @@ public class UserInputValidator {
     }
 
     private static void checkEmpty(String input) {
-        if (input.isEmpty()) {
+        if (input == null || input.isBlank()) {
             throw new UserInputException(INPUT_VALUE_BLANK);
         }
     }
