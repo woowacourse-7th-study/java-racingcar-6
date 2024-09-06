@@ -17,12 +17,20 @@ public class InputView {
     public List<String> inputCarNames() {
         System.out.println(INPUT_CAR_NAME);
         String carNames = Console.readLine();
-        List<String> carNamesList = splitInput(carNames); // 쉼표를 기준으로 리스트로 변환
+        return processCarNames(carNames);
+    }
+
+    public List<String> inputCarNamesForTest(String carNames) { // 테스트에서 사용할 입력 메서드
+        return processCarNames(carNames);
+    }
+
+    private List<String> processCarNames(String carNames) {  // 입력된 자동차 이름을 처리하는 로직 분리
+        List<String> carNamesList = splitInput(carNames);
         InputCarNamesValidator.validateCarNames(carNamesList); // 유효성 검사
         return carNamesList;
     }
 
-    private List<String> splitInput(String names) {
+    private List<String> splitInput(String names) { // 쉼표를 기준으로 리스트로 변환
         return Arrays.stream(names.split(CAR_NAMES_DILIMITER, -1)) // 쉼표를 기준으로 쪼개고
                 .map(String::trim) // 각 이름의 앞뒤 공백 제거
                 .collect(Collectors.toList()); // 리스트로 변환하여 반환

@@ -78,7 +78,7 @@
 
 - View
   - InputView
-    - [ ] InputCarsTest
+    - [x] InputCarsTest
       - 자동차의 입력이 순차적으로 저장되는지 검증
       - 자동차 리스트에 공백이 존재하면 안된다
       - 자동차 리스트에 5글자를 넘어가는 자동차가 존재해서는 안된다
