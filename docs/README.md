@@ -70,7 +70,7 @@
   - [x] CarsTest
     - 최대 거리가 정상적으로 반환되었는지 검증
     - 우승자가 단독인 경우, 복수인 경우 올바르게 출력이 되는지 검증
-  - [ ] MovableTest
+  - [x] MovableTest
     - 4 이상에서 전진하는지 검증
     - 3 이하에서 정지하는지 검증
   - [ ] RandomNumberGeneratorTest
